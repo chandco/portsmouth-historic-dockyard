@@ -1,0 +1,404 @@
+.alpha-color(@white);
+@menu-hover : @alpha-color; 
+@menu-background : transparent;// could be a colour
+@child-background : @nav-highlight;
+
+
+
+#container {
+  @media screen and (max-width: 900px) {
+    // padding-top: @header-height-px * 1.1;
+  }
+}
+
+.header {
+  position: relative;
+  z-index: 1200;
+  backface-visibility: hidden;
+    
+
+
+    
+
+    
+    width:100%;
+
+    
+    background: @header-background;
+    height: @header-height-px;
+    padding: (@header-height-px * 0.15) 0;
+    position: fixed;
+    top: 0;
+
+
+
+     @media screen and (max-width: 900px) {
+        max-width: 100%;
+        position: fixed;
+        border-bottom: 2px solid RGBA(0,0,0,0.2);
+        height: @header-height-px * 0.7;
+      }
+
+
+
+    #inner-header {
+      backface-visibility: hidden;
+      
+      
+      
+
+
+      height: 100%;
+
+   
+
+
+      nav[role="navigation"] {
+        width: 100% - @global-sidebar-width - @global-sidebar-margin;
+        right: 0;
+        .vertical-center();
+      }
+
+
+    #logo {
+      
+      height: 100%;
+      width: @global-sidebar-width;
+      margin-right: @global-sidebar-margin;
+      left: 0;
+
+      display: block;
+      margin: 0;
+
+      padding: 0 0;
+      z-index: 5;
+      .vertical-center();
+
+        @media screen and (max-width: 900px) {
+          left: 2%;
+        }
+
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }     
+
+    }
+}
+
+
+nav[role="navigation"] {
+
+  
+
+  .nav {  
+
+      width: 100%;
+      font-size: 1em;
+
+      margin: 0;
+      z-index: 10;
+
+      text-align: right;
+
+      padding: 0;
+
+      .h-font();
+      //text-transform: uppercase;
+      font-weight: bold;
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      > li {
+        .nav-li-style(); // don't want children inheriting this.  we'll use another mixin for them.
+        
+      }
+
+      li {
+
+        display: inline-block;
+        position: relative;
+        
+        
+        background: @nav-link-background;
+        color: @nav-link-color;
+
+        &.current-menu-item {
+          color: @red;
+        }
+        &:hover {
+          background: @nav-highlight;
+          color: @nav-highlight-text;
+
+
+        }
+
+        
+
+
+        a {
+          display: inline-block;
+          
+          width: auto;
+          .nav-font-style(); // defined in design.less
+          
+        }
+
+
+
+        &:first-of-type {
+          margin-left: 0;
+        }
+
+        .sub-menu, .children {
+
+          visibility: hidden;
+          position: absolute;
+          background: @nav-submenu-background;
+          color: @nav-submenu-text;
+          overflow: hidden;
+          margin: 0;
+
+          > li {
+
+            display: block;
+            &:hover {
+
+             background: @nav-submenu-background-hover;
+             color: @nav-submenu-text-hover;
+              a {
+                color: inherit;
+              }
+            }
+
+            .nav-li-children-style();
+          }
+
+        }
+        &:hover .sub-menu, .sub-menu:hover {
+
+
+          top: 100%;
+          right: 0;
+          overflow: visible;
+          visibility: visible; 
+          margin: 0;
+
+          li {
+             margin-left: 0;
+             float: none;
+             width: auto;
+             white-space: nowrap;
+            
+              a {
+                color: inherit;
+              }
+
+          }
+        }
+      }
+  }
+
+        
+}
+
+
+
+#inner-header nav[role="navigation"] {
+  // header navigation styles only
+  position: relative;
+  
+}
+
+
+#navigation-dropdown { 
+  display: none;
+}
+
+
+#popup-menu-container {
+  display: none;
+}
+
+
+@keyframes menufadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bgfadein {
+  from {
+    background: transparent;
+  }
+
+  to {
+    background: @white;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+
+  #navigation-dropdown {
+    display: block;
+    z-index: 20;
+    .button-reset();
+    font-size: 2em;
+    right: 2%;
+    width: auto;
+    text-align: center;
+    line-height: 0;
+    .vertical-center();
+  }
+
+  #inner-header nav[role="navigation"] { display: none; }
+
+
+  // This is basically everything to do with when the menu is 'open'
+  html { height: 100%; }
+  body.navigation-menu-open  {
+    // body
+    height: 100%;
+    box-sizing: content-box;
+    padding: 0;
+    margin: 0;
+    
+
+
+    
+    #popup-menu-container {
+
+
+      display: block;
+      position: fixed;
+      overflow: scroll;
+      width: 100%;
+      height: 100%;
+      top : @header-height-px;
+      background: @white;
+      z-index: 1000;
+
+
+
+      animation-duration: .3s;
+      animation-name: bgfadein;
+
+      .popup-styles();
+
+      #popup-menu {
+        animation-duration: 1s;
+        animation-name: menufadein;
+
+
+        width: 96%;
+        
+        > li {
+          .alpha-color(@light, 0.8);
+          border-bottom: 1px solid @alpha-color;
+          padding: 5px;
+          color: @dark;
+
+          &:hover .sub-menu, &:hover .children {
+           padding: 0 0 0 10px;
+
+          }
+        }
+
+        li {
+          display: block;
+          float: none;
+          padding: 3px;
+
+          box-sizing: content-box;
+          margin-left: 0;
+          line-height: @mobile-line-height;
+          min-height: @mobile-line-height;
+
+          text-align: left;
+          background: transparent;
+
+
+
+
+          &:nth-of-type(n+2) {
+            border-top: 1px solid @nav-highlight;
+          }
+
+
+          
+
+          
+
+          .sub-menu,.children {
+            margin-top: 1em;
+            box-shadow: none;
+            background: none;
+            visibility: visible;
+            position: relative;
+            display: block;
+            top: 0;
+
+            padding: 0 0 0 10px;
+
+            &:hover {
+              top: 0;
+              border: none;
+              &:nth-of-type(n+2) {
+                border-top: 1px solid @nav-highlight;
+              }
+            }
+
+
+           
+
+            > li {
+                
+               border-top: none;
+               position: relative;
+               color: @dark;
+               border: none !important;
+              a:before {
+                content:"";
+                display: inline-block;
+                
+                width: @mobile-line-height / 4;
+                height: @mobile-line-height;
+                margin-right: 10px;
+                .lighten(@lighter);
+                border-left: 1px solid @lighter;
+                border-bottom: 1px solid @lighter;
+                vertical-align: top;
+                background: none;
+                position: absolute;
+                left: 0;
+                top: @mobile-line-height / 4;
+              }
+            }
+          }
+          
+          &:hover {
+
+              background: RGBA(0,0,0,0.2);
+         }
+          .sub-menu {
+            
+          }
+        }
+
+        
+      }
+
+     }
+  }
+} // end @media max-width 900
+

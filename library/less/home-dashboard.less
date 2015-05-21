@@ -1,0 +1,256 @@
+@margin-right: 2%;
+
+
+	#home-left-sidebar {
+
+		
+	}
+
+	#weekly-menu-table{
+		
+
+		
+
+	}
+
+
+
+
+
+
+	
+
+	#footer-sidebar {
+		clear:both;
+
+		display: flex;
+	  	flex-direction: row;
+	  	flex-wrap: wrap;
+	  	justify-content: space-between;
+
+		.widget {
+			width: 24%;
+
+			@media screen and (max-width: @tablet-break) {
+				width: 48%;
+			}
+
+			@media screen and (max-width: @mobile-break) {
+				width: 100%;
+			}
+		}
+	}
+
+
+
+.right-content table, .left-content table {
+	width: 100%;
+	table-layout: fixed;
+	
+	td:first-of-type:nth-last-of-type(6n) {
+		background: fade(@blue, 50%);
+		
+	}
+	
+	tr:first-of-type {
+		background: @dark;
+		color: @light;
+		min-height: 0;
+
+		td:first-of-type:nth-last-of-type(6n) {
+			background: @white;
+		}
+	}
+
+	tr:nth-of-type(even) {
+		background: fade(black, 10%);
+	}
+
+	td {
+		padding: .5em;
+		width: 20%;
+		height: 80px; // just for some padding
+		vertical-align: top;
+		text-align: left;
+		border-right: 1px solid fade(white, 50%);
+		&:last-of-type {
+			border-right: none;
+		}
+
+		&.today {
+			background: fade(@green, 30%);
+		}
+	}
+
+
+	
+
+
+}
+
+.table-prev,
+.table-next {
+	display: none;
+}
+
+
+.table-wrapper {
+
+	position: relative;
+	td:first-of-type:nth-last-of-type(6n) {
+		display: none;
+	}
+
+	.label-column {
+		width: 20%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		margin: 0 auto;
+		overflow: hidden;
+
+		table {
+			width: 20 * 350%;
+			margin: 0;
+		}
+
+		td:first-of-type:nth-last-of-type(6n) ~ td {
+			width: 14%;
+		}
+
+		td:first-of-type:nth-last-of-type(6n) {
+			background: fade(@blue, 50%);
+			display: table-cell;
+			width: 0.99%;
+
+		}
+		tr:first-of-type td {
+			background: @white;
+		}
+	}
+	.label-column + .table-viewport {
+		width: 70%;
+		left: 20%;
+		position: relative;
+	}
+
+	@media screen and (max-width: 800px) {
+		.label-column {
+			left: 5%;
+		}
+		.label-column + .table-viewport {
+			left: 10%;
+		}
+
+
+	}
+
+	@media screen and (max-width: 800px) {
+		
+	}
+	
+}
+
+@media screen and (max-width: 800px) {
+	.no-touch {
+		// ghetto browser hack to hide the scrollbar for desktops but not appear on mobiles
+		.table-wrapper {
+			&:after {
+				content: ""; 
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				height: 17px;
+				background: white;
+				left: 0;
+				right: 0;
+
+			}
+
+		}
+	}
+}
+
+
+@media screen and (max-width: 800px) {
+		
+		.table-wrapper {
+			width: 100%;
+			position: relative;
+			display: block;
+		  	
+
+			.table-prev,
+			.table-next {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				border: none;
+				display: block;
+
+				i.fa {
+					position: absolute;
+					top: 50%;
+					transform:translateY(-50%);
+				}
+
+				width: 5%;
+				background: @off-lightblue;
+				color: @light;
+			}
+
+
+			.table-prev {
+				left: 0%;
+			}
+
+			.table-next {
+				right: 0%;
+			}
+
+			
+
+			.table-viewport {
+				display: block;
+		  		width: 90%;
+		  		margin: auto;
+		  		position: relative;
+		  		overflow-x: scroll;
+
+
+		  		table {
+				width: 500%;
+				table-layout: fixed;
+				overflow-x: scroll;
+				&::-webkit-scrollbar { 
+				    display: none; 
+				}
+				margin: 0;
+					tr {
+						width: 100%;
+						position: relative;
+						
+
+						td {
+							width: 20%;
+							padding: .5em 1%;
+						}
+					}
+
+
+					td:first-of-type:nth-last-of-type(6n) {
+						display: none;						
+					}
+				}
+			}
+
+			
+
+
+		  	
+			
+		}
+	
+
+}	
+

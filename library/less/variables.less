@@ -1,0 +1,142 @@
+
+@grey : #999999;
+@green : #41a535;
+@red: #d22529;
+@blue : #0086ac;
+
+@black : RGB(0,0,0);
+@white : RGB(255,255,255);
+@mid-grey: RGB(128,128,128);
+@darkgrey : RGB(51,51,51);
+
+
+@lightgrey : #DDDDDD;
+@lighter-grey : #E6E6E6;
+@off-white: #F0f0f0;
+
+
+
+@darkblue : #fff;
+@lightblue : #555;
+@off-lightblue : #444;
+
+
+
+// mostly this is setting variables to change the look of the site.
+
+
+// layout widths:
+
+@global-sidebar-width: 30%;
+@global-sidebar-margin: 4%;
+
+
+
+// COLOURS
+
+@casestudy-icon : @fa-var-newspaper-o;
+@activity-icon: @fa-var-rocket;
+
+@this-website: ~'http://ornc.local'; // this will have to change 
+
+// We use generic colour names to imply something so set them here.  
+@body-font : 'Source Sans Pro', sans-serif;
+@h-font : 'Source Sans Pro', sans-serif;
+
+.h-font() {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.body-font() {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+@dark : @darkgrey;
+@light : @lightgrey;
+@lighter : @white;
+
+@body-background : @white;
+
+@med-dark : #506077;
+
+// used for navigation, amongst other things.
+@highlight : #55f;
+@highlight-text : @black;
+
+@emphasis : @darkblue;
+@emphasis-text: @white; // if @emphasis was a background etc.
+
+@link-color : @red;
+
+// general colour as a default - this just sets the body tag
+@default-text : @darkgrey;
+
+@byline: @lighter;
+
+
+// CF7 Stuff
+@formbg : @lightblue;
+
+// Header Styles and sizes
+@header-background: lighten( @lightgrey, 10% );
+
+// sidebars
+@widget-background: fade( @lightgrey, 20% );
+
+//@lighter-grey; @white
+@nav-link-color: @grey;
+@nav-link-background: transparent;
+
+@nav-highlight : @grey;
+@nav-highlight-text : @white;
+
+@nav-secondary-highlight : @grey;
+@nav-secondary-highlight-text : @white;
+
+@nav-submenu-background : lighten(@grey, 30%);
+@nav-submenu-text: @white;
+@nav-submenu-text-hover : @white;
+@nav-submenu-background-hover : lighten(@grey, 10%);
+
+// carousel styles
+@cycle-carousel-width : 100%;
+@carousel-next-fa-icon : @fa-var-chevron-right;
+@carousel-prev-fa-icon : @fa-var-chevron-left;
+@skip-offset : 5%;
+@skip-button-color : RGBA(255,255,255,0.8);
+@carousel-aspect-ratio : (4 / 6);
+@slide-background: @darkgrey;
+
+
+@carousel-max-height: 600px;
+@carousel-height: 600px; 
+
+
+
+//mobile and headers stuff
+
+
+@mobile-line-height: 14px;
+@header-height-px : 60px;
+
+
+@content-margin : 20px; // better than em because of positioning absolutes
+
+
+@cta-sidebar-width : 15%;
+@mobile-cta-height : 100px;
+
+@tablet-break : 968px;
+
+@mobile-break: 480px;
+
+// blog stuff
+@post-tag-background: fade(@red, 50%);
+@post-tag-color: @white;
+@post-tag-color-hover: @red;
+@post-tag-background-hover: @white;
+
+
+// footer stuff
+
+@footer-background : @mid-grey;

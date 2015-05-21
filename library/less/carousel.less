@@ -1,0 +1,136 @@
+// CONFIGURATION:
+// Carousel
+
+
+
+.slick-prev:before { content: @carousel-prev-fa-icon; }
+.slick-next:before { content: @carousel-next-fa-icon; }
+[dir="rtl"] .slick-prev:before { content: @carousel-next-fa-icon; }
+[dir="rtl"] .slick-next:before { content: @carousel-prev-fa-icon; }
+
+
+.cycle-slideshow.fill-width {
+	.slick-list {
+		//width: 100%;
+		//height: auto;
+		.slick-track {
+			//width: 100%;
+		//height: auto;
+			.slick-slide {
+			//display: block; // so that it appears on init.
+			//overflow: hidden;
+			position: relative;
+				img {
+				//	display: block;
+					//margin: auto;
+					position: absolute;
+					width: 100%;
+					height: auto;
+					top: 50%;
+					transform: translateY(-50%);
+					min-height: 100%; //ouch
+
+					@media screen and (max-width: 1300px) {
+						width: auto;
+						height: 100%;
+						top: 0;
+						transform: translateX(-50%);
+						left: 50%;
+
+						
+					}
+				}
+
+				&.panorama-tablet, &.panorama-mobile, &.panorama {
+
+					
+
+					img {
+						width: auto;
+						height: 100%;
+						top: 0;
+						transform: translateX(-50%);
+						left: 50%;
+
+						
+
+					}
+					
+				}
+
+
+
+			}
+		}
+	}
+}
+.cycle-slideshow {
+
+		.tooltip {
+			position: absolute;
+			top: 0;
+			margin: auto;
+			left: 0;
+			right: 0;
+			color: #fff;
+			z-index: 500;
+		}
+
+		background: @slide-background;
+		opacity: 0;
+		transition:opacity .5s ease;
+
+		&.slick-initialized {
+			opacity: 1;
+		}
+
+		position: relative;
+		width: @cycle-carousel-width;
+
+		height: @carousel-height;
+		max-height: @carousel-max-height;
+
+		@media screen and (max-width: 930px) {
+			height: @carousel-height / 2;
+			max-height: @carousel-max-height /2;
+		}
+
+		
+
+
+		// here you would change it to be a 'fill width' thing.
+	.slick-list {
+		height: 100%;
+		.slick-track {
+			height: 100%;
+			.slick-slide {
+			display: block; // so that it appears on init.
+			overflow: hidden;
+				img {
+					display: block;
+					margin: auto;
+					height: 100%;
+					width: auto;
+					border: 0;
+					outline:0;
+				}
+			}
+		}
+	}
+
+
+
+
+
+		
+
+		
+
+		
+	
+
+}
+
+html.touch .slick-next, html.touch .slick-prev {
+	display: none !important;
+}

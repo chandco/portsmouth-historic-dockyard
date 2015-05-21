@@ -1,0 +1,205 @@
+* {
+  //background: fade(black, 5%);
+}
+
+// use mixins to make cleaner CSS, but keep the config here.
+
+.body-style() {
+	color: @default-text;
+	background: @body-background; // may want image.
+}
+
+
+
+.footer-style() {
+	background: @footer-background;
+
+
+	a {
+	  background:transparent;
+	  text-decoration: none;
+	  color:#8095CB;
+	}
+	a:focus {
+	  outline:thin dotted;
+	  color:#8095CB;
+	}
+	a:active {
+	  outline:0;
+	}
+	a:hover {
+	  outline:0;
+	  color:#8095CB;
+	}
+
+
+	a:visited {
+	  color:#8095CB;
+	}
+	a:hover, a:visited:hover, a:visited:focus {
+	  color:#8095CB;
+	}
+	a:link, a:visited:link {
+	  -webkit-tap-highlight-color:rgba(0,0,0,0.3);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#container {
+  top: @header-height-px;
+  position: relative;
+ 
+  margin-bottom: @header-height-px;
+  padding-top: 2em;
+  @media screen and (max-width: @tablet-break) {
+    padding-top: 0;
+  }
+}
+
+.admin-bar {
+  .header {
+    top: 32px !important;
+  }
+
+
+  #container {
+   // top: @header-height-px + 32px !important;
+    //position: relative;
+   // margin-bottom: @header-height-px + 32px !important;
+  }
+}
+
+
+
+.page-template-template-home #content {
+  margin-top: @header-height-px;
+}
+
+.nav-li-style() {
+  margin: 0; // it's coming from the right so the trailing margin is fine
+  
+  height: 100%;
+  background: rgba(0,0,0,0.2); // debug
+
+  border-right:2px solid transparent;
+  background-clip: border-box; 
+
+  a {
+    padding: 5px 2em;
+    text-transform: lowercase;
+  }
+
+  .sub-menu, .children {
+     right: -2px !important; // account for the border
+  }
+  &:hover {
+    
+
+    .sub-menu, .children {
+      padding: 0;
+      border-right:2px solid RGBA(0,0,0,0.4);
+      border-bottom: 2px solid RGBA(0,0,0,0.4);
+     
+      background-clip: border-box; 
+    }
+  }
+}
+
+
+
+.popup-styles() {
+  // this is for the popup mobile menu: #popup-menu-container is this basically.  
+
+  // because CTA exists:
+  top: @header-height-px;
+
+  padding-top: 5px;
+
+  nav[role="navigation"] .nav > li {
+    border-right: none !important;
+  }
+
+  ul {
+
+      border-right: none !important;
+      border-bottom: none !important;
+
+  }
+
+
+}
+
+.nav-li-children-style() {
+  margin: 0; // it's coming from the right so the trailing margin is fine
+  
+}
+
+body {
+	.body-style();
+}
+
+
+.nav-font-style() {
+
+  
+  color: inherit;
+}
+
+
+
+.full-width-background-maker(@color : RGBA(0,0,0,0.5)) {
+	position: relative;
+	padding-top: 2em;
+	padding-bottom: 2em;
+  margin: 3em 0;
+
+  &:before {
+    content: "";
+    width: 4000px;
+    left: -1000px;
+    background: @color;
+    top: 0;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+#content {
+	width: 100%;
+}
+#inner-content {
+	
+    .full-width-background {
+
+      
+
+      > h1, > h2, > h3, > h4 {
+        margin-top: 0;
+      }
+      .alpha-color(@light, 0.35);
+      .full-width-background-maker(@alpha-color);
+
+      &.blue {
+      	&:before {
+      		//background: @blue;
+      	}
+      }
+
+      & > h2 {
+        margin-top: 0;
+      }
+    }
+
+}

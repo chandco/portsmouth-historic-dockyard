@@ -1,0 +1,22 @@
+/******************************************************************
+Theme Name: B&I Restaurant Theme
+Theme URI: http://chandco.net
+Description: A theme for Lusso and charlton House unit restaurants
+Author: Nathan Edwards / Raj Chudasama
+Author URI: http://www.chandco.net
+Version: 0.1
+
+******************************************************************/
+
+/*
+WordPress Probz
+So Theme Check (http://wordpress.org/plugins/theme-check/)
+is constantly telling me that it needs these classes in the CSS even
+though they are in the REAL stylesheet in library/css/style.css.
+So we're gonna drop these here to keep it happy.
+Great work, Theme Check (eye roll)
+*/
+
+.sticky {}          /* DO NOT EDIT THIS */
+.gallery-caption {} /* THESE ARE USELESS */
+.bypostauthor {}    /* THEY ARE ONLY TO KEEP THEME CHECK HAPPY */

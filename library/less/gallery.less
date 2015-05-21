@@ -1,0 +1,72 @@
+
+
+/// Gallery - should be moved outside of this
+
+
+.gallery {
+  text-align: center;
+  //overflow: hidden;
+  text-align: center;
+  padding: 1em 0.5em;
+  /* border-top: 1px solid #bbe3e8; */
+  /* border-bottom: 1px solid #bbe3e8; */
+  background: rgba(59, 69, 94, 1);
+  margin: 2em auto;
+
+  &:hover {
+    figure {
+      filter: grayscale(100%);
+      transform:scale(0.8,0.8);
+      opacity: 0.5;
+    }
+  }
+
+  body {
+    color:red;
+  }
+
+  figure {
+
+    width: 32%;
+    vertical-align: top;
+    display:inline-block;
+    margin: 0;
+    padding: 0.2em;
+    line-height: 0;
+    position: relative;
+    z-index: 2; // why was this 5555?
+
+    figcaption {
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    @media screen and (max-width:700px) {
+      width:100%;
+    }
+    div {
+      margin: 0;
+      padding: 0;
+    }
+
+    &:nth-child(3n-1) {
+      margin: 0;
+    }
+    img {
+      width:100%;
+      height: auto;
+      display: block;
+      margin: 0;
+    }
+    
+    transition: all 0.3s ease;
+    &:hover {
+      filter: none;
+      transform:scale(1.1,1.1);
+      opacity: 1;
+
+
+    }
+  }
+}
+
