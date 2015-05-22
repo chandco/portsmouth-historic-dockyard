@@ -70,6 +70,45 @@
                 
             });
 
+            ed.addButton('cta-link', {
+                title: 'Convert Link to CTA',
+                cmd: 'cta-link',
+                icon: false,
+                image : url + '/../img/cta.png'
+            });
+
+            ed.addButton('cta-link-wide', {
+                title: 'Convert Link to CTA (Wide)',
+                cmd: 'cta-link-wide',
+                icon: false,
+                image : url + '/../img/cta.png'
+            });
+
+            ed.addCommand('cta-link', function() {
+                var selected_text = ed.selection.getNode();
+                var return_text = selected_text;
+
+                if (ed.dom.is(selected_text, 'a')) {
+
+                    ed.dom.removeClass(selected_text, 'cta');
+                    ed.dom.toggleClass(selected_text, 'cta-inline');
+                }
+                //return_text = '[wide_background]' + selected_text + '[/wide_background]';
+                
+            });
+
+            ed.addCommand('cta-link-wide', function() {
+                var selected_text = ed.selection.getNode();
+                var return_text = selected_text;
+
+                if (ed.dom.is(selected_text, 'a')) {
+                    ed.dom.removeClass(selected_text, 'cta-inline');
+                    ed.dom.toggleClass(selected_text, 'cta');
+                }
+                //return_text = '[wide_background]' + selected_text + '[/wide_background]';
+                
+            });
+
            
 
 

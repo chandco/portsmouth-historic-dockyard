@@ -2117,7 +2117,7 @@ a.cta-inline {
   font-family: 'ITC Tabula W01', sans-serif;
   font-weight: normal;
   position: relative;
-  padding: 0.5em 1em .5em 3em;
+  padding: 0.5em 1em;
   text-align: left;
   margin: 1em auto;
   z-index: 1;
@@ -2151,14 +2151,8 @@ a.cta i.fa,
 a.cta-inline i.fa {
   display: block;
   float: left;
-  margin-bottom: 20px;
-  margin-right: 20px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-  left: 0.5em;
-  position: absolute;
+  margin-right: .5em;
+  position: relative;
   font-size: 1.5em;
 }
 a div.feature,
