@@ -1,5 +1,7 @@
 // only showin in the admin side
-
+@import "font-awesome/less/font-awesome";
+@import "variables";
+@import "mixins";
 
 .fa {
 	font: normal normal normal 14px/1 FontAwesome !important;
@@ -9,18 +11,124 @@
 .admin_page_feature-box-edit {
 
 
+.mce-i-ci.mce-ico {
+
+    display: inline-block;
+	  background: #FFF;
+	  background-image: url('photoicon.png');
+	  box-shadow: 0px 0px 2px 1px rgba(0,0,0,.5);
+	  background-size: 15px 15px;
+	  background-position: center center;
+	  background-repeat: no-repeat;
+	  height: 14px;
+    
+
+    &.rotate-right {
+      transform:rotate(6deg);
+    }
+
+    &.rotate-left {
+      transform:rotate(-6deg);
+    }
+
+    &.polaroid {
+      border: 3px solid darken(white, 5%);
+    }
+  }
+
+
 
 #mce-feature-box-form {
-	.feature-box {
+
+	.clearfix {
+		clear: both;
+  		width: 100%;
+	}
+
+	.controls {
+		width: 60%;
+  		float: left;
+	}
+
+	#colours {
+		li {
+			list-style-type: none;
+			display: block;
+			float: left;
+			width: 20%;
+			height: 0;
+			padding-bottom: 5%;
+			padding-top: 15%;
+			margin: 2%;
+			cursor: pointer;
+			border: 1px solid #ccc;
+ 			border-radius: 4px;
+
+
+			.colours-bg();
+
+			span {
+				display: none;
+				
+			}
+		}
+	}
+
+	.choose-colours {
+		float: left;
+		width: 30%;
+	}
+
+
+	.icon-picker {
+		overflow: hidden;
 		width: 100%;
+		margin: 10px 0;
+		clear: both;
+		li {
+
+			display: block;
+			  width: 30px;
+			  float: left;
+			  margin: 0px;
+			  text-align: center;
+			  font-size: 1em;
+			  padding: 2px;
+
+			 .fa {
+			   font-size: 2em !important;
+			}
+
+
+			input[type='radio'] {
+				display: none;
+			}
+
+			label input[type='radio'] + span {
+				display: block;
+				padding: 2px;
+				border-radius: 2px;
+				border: 1px solid fade(black, 20%);
+			}
+
+			label input[type='radio']:checked + span {
+				background: #fed600;
+
+			}
+		}
+	}
+	.feature-box {
+		width: 30%;
 		max-width: 250px;
+
+		color: #000;
 
 		float: left;
 		margin-right: 10px;
 
 		input, textarea {
 			box-sizing: border-box;
-			background: rgba(255,255,255,0.5);
+			background: transparent;
 			color: #fff;
 			position: relative;
 			z-index: 5;
@@ -31,7 +139,9 @@
 			z-index: 5;
 		}
 
-		background: rgba(0,0,0,0.2);
+		background: #fff;
+
+		.colours-bg();
 
 		header {
 			width: 100%;
@@ -71,44 +181,52 @@
 				}
 			}
 
-			.h2 {
-				position: absolute;
+			
+
+			
+		} // ehader
+		.icon-title {
+			width: 100%;
+			display: block;
+		}
+		.h2 {
+				//position: absolute;
 				bottom: 0;
 				box-sizing: border-box;
 				width: 100%;
-				background: rgba(0,0,0,0.5);
+				background: transparent;
 
 				z-index: 3;
-
-				color: #fff;
+				color: inherit;
+				
 				padding: 2%;
 
 				label {
-					width: 100%;
+					width: 90%;
 					margin: auto;
 					text-align: center;
+					color: inherit;
+					display: inline-block;
 
 
 
 					input {
-						color: #fff;
-						display: block;
-						background: rgba(255,255,255,0.2);
-						padding: 2%;
-						width: 90%;
+						
+						display: inline-block;
+						padding: 0;
+						width: 85%;
 						border: none;
 						font-size: 1em;
 						font-weight: bold;
 						margin: auto;
-
+						text-transform: uppercase;
+						color: inherit;
 					}
+
 				}
 
 				
 			}
-
-			
-		} // ehader
 
 		label {
 			text-align: center;
@@ -118,14 +236,16 @@
 			position: relative;
 			margin: auto;
 			display: block;
+			color: inherit;
 			textarea {
 
 				position: relative;
-
-				width: 90%;
+				width: 100%;
+				box-sizing: border-box;
 				margin: auto;
 				padding: 2%;
-				color: RGBA(0,0,0,1);
+				color: inherit;
+				background: transparent;
 				min-height: 150px;
 				font-size: 0.8em;
 			}

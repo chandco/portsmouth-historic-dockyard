@@ -1,0 +1,62 @@
+<div class="colour-picker">
+
+
+	<style>
+		#colours li {
+			list-style-type: none;
+			display: block;
+			float: left;
+			width: 20%;
+			height: 0;
+			padding-bottom: 5%;
+			padding-top: 15%;
+			margin: 2%;
+			cursor: pointer;
+
+		}
+
+		#colours li span {
+			display: block;
+			width: 100%;
+			background: #fff;
+			text-align: center;
+			padding: 2% 2%;
+		}
+	</style>
+	<ul id='colours'>
+		<li data-color='yellow' class='yellow' style='background:#fed600;'><span>Yellow</span></li>
+		<li data-color='purple' class='purple' style='background:RGB(152, 22, 93);'><span>Purple</span></li>
+		<li data-color='white' class='white' style='background:#FEFEFE;'><span>White</span></li>
+		<li data-color='black' class='black' style='background:#131313;'><span>Black</span></li>
+		<li data-color='blue' class='blue' style='background:RGB(187,227,232);'><span>Blue</span></li>
+		<li data-color='green' class='green' style='background:RGB(201,226,177);'><span>Green</span></li>
+		<li data-color='grey' class='grey' style='background:#999999'><span>Grey</span></li>
+
+	</ul>
+
+	<script>
+		var lis = document.querySelectorAll('#colours li');
+
+		var forEach = function (array, callback, scope) {
+		  for (var i = 0; i < array.length; i++) {
+		    callback.call(scope, i, array[i]); // passes back stuff we need
+		  }
+		};
+
+
+		forEach(lis, function (index, li) {
+		    
+		    	li.addEventListener('click', function(e) {
+
+					var return_text = '{{section:' + this.dataset.color + '}}';
+
+					parent.tinyMCE.activeEditor.execCommand('mceInsertContent', 0, return_text);
+					parent.tinyMCE.activeEditor.windowManager.close();
+
+				});
+		});
+		
+
+
+	</script>
+</div>

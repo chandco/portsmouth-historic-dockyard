@@ -69,51 +69,34 @@ a.cta-inline {
  
 a.cta, a.cta-inline {
   
-  background: @red;
-  color: @white !important;
+  border: 2px solid @red;
+  color: @red;
   max-width: 97%;
   &:visited {
-    color: @white;
+    color: @red;
   }
 
   * { 
-    color: @white;
+    color: @red;
 
   }
 
   &:hover {
-    color: @highlight;
+    color: @white !important;
+    background: @red;
     * {
-      color: @highlight;
+      color: @white;
     }
   }
 
   font-family: @h-font;
   font-weight: normal;
   position: relative;
-  padding: 0.5em 1em;
-  text-align: center;
+  padding: 0.5em 1em .5em 3em;
+  text-align: left;
   margin: 1em auto;
   z-index: 1;
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-
-    margin: auto;
-    background: transparent;
-    border-width: 0 0.3em 0.3em 0.3em;
-    border-style: solid;
-    border-color: @lighter-grey;
-    z-index: -1;
-
-    top: 30%;
-    bottom: -0.29em;
-    left: -0.29em;
-    right: -0.29em;
-    transition: border-color 0.7s ease, transform 0.2s ease;
-
-  }
+  text-transform: uppercase;
 
   
 
@@ -131,8 +114,11 @@ a.cta, a.cta-inline {
 	float: left;
 	margin-bottom: 20px;
 	margin-right: 20px;
-	top: 4px;
-	position: relative;
+	top: 50%;
+  transform:translateY(-50%);
+
+  left: 0.5em;
+	position: absolute;
 	font-size: 1.5em;
   }
 }
@@ -178,7 +164,7 @@ a.cta, a.cta-inline {
       max-width: 100%;
     }
 
-    background: @light;
+    background: @black;
     transition:background 0.4s ease;
 
     
@@ -194,15 +180,19 @@ a.cta, a.cta-inline {
       overflow: hidden;
       border-bottom: none;
 
+
+
       p {
         padding: 0;
         margin: 0;
       }
       h2 {
         position: absolute;
-        bottom: 0;
-        .alpha-color(@lighter,0.6);
-        background: @alpha-color;
+        top: 50%;
+        transform: translateY(-50%);
+        
+        text-transform: uppercase;
+        
 
         width: 100%;
         left: 0;
@@ -210,7 +200,7 @@ a.cta, a.cta-inline {
         z-index: 2;
         margin: 0;
         padding: 0.5em 1em;
-        font-size: 1em;
+        font-size: 2em;
         text-align: center;
         transition:background 0.2s ease;
       }
@@ -226,23 +216,23 @@ a.cta, a.cta-inline {
         top: 0;
         left: 50%;
         transform: translateX(-50%) scale(1,1) translateZ(0);
-
-        transition:transform 0.4s ease-out;
+        opacity: 0.8;
+        transition:opacity 0.4s ease-out;
         background-color: rgba(255,255,255,.01);
         backface-visibility: hidden;
       }
     }
 
     &:hover {
-      background: @lighter;
-      header img {
-        transform: translateX(-50%) scale(1.1,1.1) translateZ(0)
-      }
+      
 
-      header h2 {
-        .alpha-color(@dark, 0.9);
-        background: @alpha-color;
+      header img {
+        opacity: 0.4;
       }
+      
+
+      
+
     }
 
     div.content {

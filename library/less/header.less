@@ -24,7 +24,10 @@
     width:100%;
 
     
-    background: @header-background;
+    // background: @header-background;
+    .gradientV(RGBA(0,0,0,0.5), RGBA(0,0,0,0));
+    border-bottom: 1px solid fade(#fff, 50%);
+    background-clip: padding-box;
     height: @header-height-px;
     padding: (@header-height-px * 0.15) 0;
     position: fixed;
@@ -35,7 +38,7 @@
      @media screen and (max-width: 900px) {
         max-width: 100%;
         position: fixed;
-        border-bottom: 2px solid RGBA(0,0,0,0.2);
+        border-bottom: 1px solid fade(white, 50%);
         height: @header-height-px * 0.7;
       }
 
@@ -54,7 +57,7 @@
 
 
       nav[role="navigation"] {
-        width: 100% - @global-sidebar-width - @global-sidebar-margin;
+        width: 74%;
         right: 0;
         .vertical-center();
       }
@@ -63,7 +66,7 @@
     #logo {
       
       height: 100%;
-      width: @global-sidebar-width;
+      width: 25%;
       margin-right: @global-sidebar-margin;
       left: 0;
 
@@ -304,7 +307,7 @@ nav[role="navigation"] {
         
         > li {
           .alpha-color(@light, 0.8);
-          border-bottom: 1px solid @alpha-color;
+          //border-bottom: 1px solid @alpha-color;
           padding: 5px;
           color: @dark;
 
@@ -331,7 +334,7 @@ nav[role="navigation"] {
 
 
           &:nth-of-type(n+2) {
-            border-top: 1px solid @nav-highlight;
+            //border-top: 1px solid @nav-highlight;
           }
 
 
@@ -354,7 +357,7 @@ nav[role="navigation"] {
               top: 0;
               border: none;
               &:nth-of-type(n+2) {
-                border-top: 1px solid @nav-highlight;
+                //border-top: 1px solid @nav-highlight;
               }
             }
 
@@ -375,8 +378,8 @@ nav[role="navigation"] {
                 height: @mobile-line-height;
                 margin-right: 10px;
                 .lighten(@lighter);
-                border-left: 1px solid @lighter;
-                border-bottom: 1px solid @lighter;
+                //border-left: 1px solid @lighter;
+                //border-bottom: 1px solid @lighter;
                 vertical-align: top;
                 background: none;
                 position: absolute;

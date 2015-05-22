@@ -1,7 +1,8 @@
-
+@yellow: #fed600;
+@purple: #550088; 
 @grey : #999999;
 @green : #41a535;
-@red: #d22529;
+@red: #ba272d;
 @blue : #0086ac;
 
 @black : RGB(0,0,0);
@@ -40,18 +41,18 @@
 @this-website: ~'http://ornc.local'; // this will have to change 
 
 // We use generic colour names to imply something so set them here.  
-@body-font : 'Source Sans Pro', sans-serif;
-@h-font : 'Source Sans Pro', sans-serif;
+@body-font : 'ITC Tabula W01', sans-serif;
+@h-font : 'ITC Tabula W01', sans-serif;
 
 .h-font() {
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: @h-font;
 }
 
 .body-font() {
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: @body-font;
 }
 
-@dark : @darkgrey;
+@dark : @red;
 @light : @lightgrey;
 @lighter : @white;
 
@@ -84,16 +85,16 @@
 @widget-background: fade( @lightgrey, 20% );
 
 //@lighter-grey; @white
-@nav-link-color: @grey;
+@nav-link-color: @white;
 @nav-link-background: transparent;
 
-@nav-highlight : @grey;
+@nav-highlight : fade(black, 50%);
 @nav-highlight-text : @white;
 
-@nav-secondary-highlight : @grey;
+@nav-secondary-highlight : fade(black, 80%);
 @nav-secondary-highlight-text : @white;
 
-@nav-submenu-background : lighten(@grey, 30%);
+@nav-submenu-background : fade(black, 80%);
 @nav-submenu-text: @white;
 @nav-submenu-text-hover : @white;
 @nav-submenu-background-hover : lighten(@grey, 10%);
@@ -117,7 +118,7 @@
 
 
 @mobile-line-height: 14px;
-@header-height-px : 60px;
+@header-height-px : 80px;
 
 
 @content-margin : 20px; // better than em because of positioning absolutes

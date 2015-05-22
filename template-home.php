@@ -9,29 +9,23 @@
 ?>
 
 <?php get_header(); ?>
+
+<div class='home-header'>
+<?php echo do_shortcode('[images_carousel tag="homepage-carousel" fill="true"]'); ?>
+
+<header class="article-header">
+
+		<h1 class="page-title"><?php the_title(); ?></h1>
+
+</header>
+
+</div>
+
 <div class='responsive-flex-container'>
 
-	<div id="home-left-sidebar" class='left-sidebar'>
-		<?php if ( is_active_sidebar( 'home-sidebar' ) ) : ?>
 
-			<?php dynamic_sidebar( 'home-sidebar' ); ?>
 
-				<?php else : ?>
-
-					<?php
-						/*
-						 * This content shows up if there are no widgets defined in the backend.
-						*/
-					?>
-
-					<div class="no-widgets">
-						<p><?php _e( 'This is a widget ready area. Add some and they will appear here.', 'cf-theme' );  ?></p>
-					</div>
-
-				<?php endif; ?>
-	</div>
-
-	<div id="weekly-menu-table" class='right-content'>
+	<div class='full-width'>
 		<?php if ( have_posts() ) : while( have_posts() ) : the_post();
 	     the_content();
 		endwhile; endif; ?>
@@ -44,7 +38,7 @@
 				$args = array(
 					
 					
-					'posts_per_page'         => 4,
+					'posts_per_page'  => 4,
 					// maybe add tax queries here
 					
 				);

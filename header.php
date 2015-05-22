@@ -17,6 +17,7 @@
 		<meta name="HandheldFriendly" content="True">
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/cae5ac1d-3b36-4061-b36b-4944db93c61f.css"/>
 
 		<?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
 		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-icon-touch.png">
@@ -66,7 +67,7 @@
 
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
 					<a href="<?php echo home_url(); ?>" rel="nofollow">
-						<img src='<?php echo get_stylesheet_directory_uri(); ?>/library/images/charlton-house.svg'>
+						<img src='<?php echo get_stylesheet_directory_uri(); ?>/library/images/logo.png'>
 					</a>
 
 					</div>
@@ -98,6 +99,6 @@
 
 		
 			
-		<div id="container" class='max-central'>
+		<div id="container" >
 
 			

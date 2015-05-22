@@ -12,20 +12,26 @@ function views_feature_box() {
 
 	<?php // list the views here ?>
 		<script type="text/html" id="tmpl-editor-feature-box">
-		<# if ( data.link ) { #>
-			<a href="{{ data.link }}" title="{{ data.linktitle }}">
-		<# } #>
-				<div class='feature'>
+		
+				<div class='feature {{data.colour}}'>
 					<header>
-						<h2>{{ data.title }}</h2>
+						
 					</header>
-					<# if ( data.innercontent ) { #>
-						<div class='content'>{{ data.innercontent }}</div>
-					<# } #>
+
+					<div class='content'>
+						<h2>
+						<# if ( data.icon ) { #>
+							<i class='fa fa-{{data.icon}}'></i>
+						<# } #>
+							{{ data.title }}</h2>
+						<# if ( data.innercontent ) { #>
+							<p>{{ data.innercontent }}</p>
+						<# } #>
+					</div>
+
 				</div>
-		<# if ( data.link ) { #> 
-			</a>
-		<# } #>
+
+		
 			</script>
 	<?php
 }
@@ -42,26 +48,71 @@ function shortcode_feature_box($atts, $content = false) {
 	
 	 // get some sort of image from img id
 
-	$img = wp_get_attachment_image_src($atts["imgid"], responsive_conditional_size('medium'));
+	
 
 	if ( $content ) { $p_class = "feature has-content"; } else { $p_class = "feature"; }
-	$output .= '<div class="' . $p_class . '">';
-	if ( $atts["link"] ) {	$output .= '<a href="' . $atts["link"] . '" title="' . $atts["linktitle"] . '">'; } 
-	$output .= 	'<header>';
-	$output .= 		'<img src="' . $img[0] . '" />';
-	$output .= 		'<h2>' . $atts["title"] . '</h2>';
-	$output .= 	'</header>';
-	if ( $atts["link"]) {	$output .= '</a>'; } 
 
-		 if ( $content ) { 
-		 	if ( $atts["link"] ) {	$output .= '<a href="' . $atts["link"] . '" title="' . $atts["linktitle"] . '">'; } 
-			$output .= '<div class="content">' . $content . '</div>';
-			if ( $atts["link"]) {	$output .= '</a>'; } 
-		 } 
+
+	if ($atts["colour"]) {
+		$p_class .= " " . $atts["colour"];
+	}
+
+	if ( $atts["link"] ) {
+		$p_class .= " has-link";
+	}
+	if ( $atts["link"] ) {	$output .= '<a href="' . $atts["link"] . '" title="' . $atts["linktitle"] . '">'; } 
+	$output .= '<div class="' . $p_class . '">';
+	
+	
+
+	if ($atts["imgid"] != "" && $atts["imgid"] != 'undefined') {
+
+		$img = wp_get_attachment_image_src($atts["imgid"], responsive_conditional_size('medium'));
+		$output .= 	'<header>';
+		$output .= 		'<img src="' . $img[0] . '" />';	
+		$output .= 	'<h2>';
+
+		if ($atts["icon"]) { $output .= '<i class="fa fa-' . $atts["icon"] . '"></i>'; }
+		
+		$output .= $atts["title"];
+		$output .= '</h2>';
+		$output .= 	'</header>';
+	} else {
+		$output .= 	'<h2>';
+
+		if ($atts["icon"]) { $output .= '<i class="fa fa-' . $atts["icon"] . '"></i>'; }
+		
+		$output .= $atts["title"];
+		$output .= '</h2>';
+	}
+
+	
+
+	
+
+	
+
+	
+	
+	
+	
+
+	 if ( $content ) { 
+	 	$output .= '<div class="content">';
+	 	//if ( $atts["link"] ) {	$output .= '<a href="' . $atts["link"] . '" title="' . $atts["linktitle"] . '">'; } 
+		$output .= '<p>' . $content . '</p>';
+		//if ( $atts["link"]) {	$output .= '</a>'; } 
+		$output .= '</div>';
+	 } 
+
+
+
+
+	 
 
 
 	$output .= '</div>';
-
+	if ( $atts["link"]) {	$output .= '</a>'; } 
 	 
 
 	
@@ -147,9 +198,6 @@ function mcea_feature_box_init() {
 				<div>
 					<label><span>URL</span><input id="url-field" type="text" name="href" /></label>
 				</div>
-				<div>
-					<label><span>Title</span><input id="link-title-field" type="text" name="linktitle" /></label>
-				</div>
 				<div class="link-target">
 					<label><span>&nbsp;</span><input type="checkbox" id="link-target-checkbox" /> Open link in a new window/tab</label>
 				</div>
@@ -198,43 +246,114 @@ function mcea_feature_box_init() {
 
 		<div class='feature-box'>
 
+			<input type='hidden' id='colour' name='colour' value='white' />
+
 			<header>
 				<div class="img">
 					<input id="_unique_name" name="settings[_unique_name]" type="text" />
 					<button id='mce-upload' class='button'>Upload New Image</button>
+					<button id='mce-remove' class='button'><i class='fa fa-times'></i></button>
 				</div>
 
-				<div class='h2'>
-					<label>Title
-						<input type='text' name='mce-feature-box' id='mce-feature-box' />
-					</label>
-				</div>
+				
 			
 			</header>
 
+			<div class='h2'>
+				<label>
+					<div class='icon-title'>
+						<span id='icon-placeholder'></span>
+						<input type='hidden' id='icon' name='icon' value='' />
+
+
+						<input type='text' name='mce-feature-box' id='mce-feature-box' />
+					</div>
+				</label>
+			</div>
+
 			<label>
-				Box Text (Optional)
+				
 				<textarea id='mce-feature-content'></textarea>
 			</label>
 		</div>			
 
 		<div class='controls'>
 			<label>Turn Feature Box into a link (leave blank if you do not want this to link somewhere):</label><BR>
-			<button class='button' id='mce-addlink'>Find Link on Site</button><Br />
+			
 			URL:
 			<input id="_feature_box_link" name="settings[_feature_box_link]" type="text" value='http://' /><BR />
 			Title:
 			<input id="_feature_box_title" name="settings[_feature_box_title]" type="text" />
+
 			<hr />
+
+			<div class='controls-icons'>
+
+			<h4>Choose Icon for CTA:</h4>
+
+			<label><input type='radio' value='' id='no-icon-radio' name='icon-picker' checked><span>No Icon</span></label>
+			<ul class='icon-picker'>
+				<?php
+				$icons = array(
+					"facebook-square",
+					"twitter",
+					"pinterest",
+					"download",
+					"comments",
+					"envelope",
+					"phone",
+					"file-pdf-o",
+					"heart",
+					"star",
+					"check",
+					"circle",
+					"check-circle",
+					"coffee",
+					"cutlery"
+
+
+
+					);
+
+
+				foreach ($icons as $icon) {
+					echo "<li> <label><input type='radio' value='" . $icon . "' name='icon-picker' ><span><i class='fa fa-" . $icon . "'></i></span></label> </li>";
+				}
+				?>
+
+				
+	
 			
+			</ul>
+			<p>Or input key from FontAWesome site: <input type='text' id='icon-manual' value='' name='fa-manual-value' /></p>
+
+			</div>
+
+			</div>
+			
+			<div class='clearfix'></div>
+			<div class='choose-colours'>
+			<h4>Choose Background:</h4>
+			<ul id='colours'>
+				<li data-color='yellow' class='yellow'><span>Yellow</span></li>
+				<li data-color='purple' class='purple'><span>Purple</span></li>
+				<li data-color='white' class='white'><span>White</span></li>
+				<li data-color='black' class='black'><span>Black</span></li>
+				<li data-color='blue' class='blue'><span>Blue</span></li>
+				<li data-color='green' class='green'><span>Green</span></li>
+				<li data-color='grey' class='grey'><span>Grey</span></li>
+
+			</ul>
+
+			</div>
 
 			<button id='mce-update' class='button button-primary'>Update</button> <button id='mce-close' class='button'>Close without Updating</button>
-		</div>
+			<div class='clearfix'></div>
 	</form>
 	<script>
 		var imgSuffix = "<?php echo $suffix; ?>";
 	</script>
-	<script src="<?php echo get_stylesheet_directory_uri(); ?>/admin/js/views_feature-box.js"></script>
+	<script src="<?php echo get_stylesheet_directory_uri(); ?>/library/editor/admin/js/views_feature-box.js"></script>
 <?php
 		 
 		   

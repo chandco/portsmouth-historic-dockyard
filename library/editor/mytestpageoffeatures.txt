@@ -1,0 +1,207 @@
+{{section:purple}}
+<h1>On a page like this, you need to manually add an H1</h1>
+This is to allow you to have more control over styling your H1 tags. Perhaps you want it left in a column with a 'featured image' or left or centered or whatever...anyway, on with the improvements.
+
+{{section:blue}}
+<h2 style="text-align: center;">Feature Boxes</h2>
+<h3></h3>
+You can click the feature box icon to insert a blank feature box. &nbsp;For a quick method, create an inline hyperlink as normal, and give it some text, and this will form the basis of the link box. &nbsp;Click on the box and click on the pencil icon to edit the box.
+<div class="row">
+<div class="col-smart">
+
+[feature-box imgid="6409" link="http://www.google.com" title="We love stock imagery" linktitle="" colour="yellow" icon="heart" ]The little text on this can add more information. All fields are actually optional apart from the heading. Looking at the watermark, this isn't stock imagery but an actual shot, but they managed to find people that look like they were from Shutterstock.[/feature-box]
+
+&nbsp;
+
+
+</div>
+<div class="col-smart">
+
+[feature-box imgid="6928" link="http://www.google.com" title="Icons are optional" linktitle="" colour="white" icon="" ]Even though this has less text, some magic makes them appear the same height ONLY if they are in the same column grid.[/feature-box]
+
+
+</div>
+</div>
+A feature box does not have to have an image, so just a link with an icon makes it a call to action like these variations:
+<div class="row">
+<div class="col-smart">
+
+[feature-box imgid="undefined" link="" title="icons are optional" linktitle="" colour="green" icon="" ]Headers aren't, small text is[/feature-box]
+
+[feature-box imgid="undefined" link="http://ita.dev.chand.co/wedding-pdf-download-sample/" title="Download My Stuff" linktitle="" colour="black" icon="file-pdf-o" ][/feature-box]
+
+
+</div>
+<div class="col-smart">
+
+[feature-box imgid="undefined" link="mailto:hello@itavenues.co.uk" title="get in touch" linktitle="" colour="yellow" icon="comments" ]hello@itavenues.co.uk[/feature-box]
+
+[feature-box imgid="undefined" link="http://fortawesome.github.io/Font-Awesome/icon/birthday-cake/" title="Custom icons" linktitle="" colour="grey" icon="" ]Select from Fontawesome wihtout the fa- prefix[/feature-box]
+
+
+</div>
+</div>
+&nbsp;
+
+<em>On Full Width Template Pages, the feature box will look weird if it is on its own and NOT contained in a column grid. You can add it to a single column grid like so:</em>
+<div class="row">
+<div class="col-smart">
+
+[feature-box imgid="undefined" link="http://ita.dev.chand.co/wedding-pdf-download-sample/" title="Email me things" linktitle="" colour="white" icon="envelope" ][/feature-box]
+
+<span></span>
+
+
+</div>
+</div>
+By default these things fill the width of their container. &nbsp;So if you want something thinner, then nest it in columns. &nbsp;This technique is a little funky, but a 3 column grid would allow you to align it left, middle or right, but the reason why I'm doing this rather than setting widths is you can approximate a width yourself in such a way that they respond in the right way. &nbsp;The empty boxes will collapse to nothing.
+<div class="row">
+<div class="col-smart">
+
+
+</div>
+<div class="col-smart">
+
+[feature-box imgid="undefined" link="" title="I'm in the middle" linktitle="" colour="green" icon="" ]And a third big[/feature-box]
+
+
+</div>
+<div class="col-smart">
+
+
+</div>
+</div>
+<div class="row">
+<div class="col-smart">
+
+[feature-box imgid="undefined" link="" title="I'm 25% wide" linktitle="" colour="grey" icon="coffee" ][/feature-box]
+
+
+</div>
+<div class="col-smart">
+
+
+</div>
+<div class="col-smart">
+
+
+</div>
+<div class="col-smart">
+
+
+</div>
+</div>
+{{section:yellow}}
+<h2 style="text-align: center;">Coloured Sections</h2>
+The section changed colour! &nbsp;You just click the section button, choose a colour and the syntax is fairly simple:
+
+{ { section : colour } }
+
+(without spaces, where the colour is from a bunch of presets). &nbsp;This goes on to the end of the page, so if you want to 'close off' a section, just make the next section 'white'...&nbsp;oh and this is only for&nbsp;"Page Template No Sidebar". &nbsp;The sections are basically ignored on other pages and templates.
+
+Insert a css&nbsp;colour value to pick your colour manually eg { { section : #efefef } } or { { section : rgba(0,0,0,0.5); } }
+
+{{section:RGBA(0,0,0,0.2)}}
+<h2 style="text-align: center;">Venue Gallery</h2>
+You can insert a venue gallery much like a normal image gallery, defining which parts appear. &nbsp;You can show capacities, styles, the description, link it to its page, and even turn the images into a mini carousel. &nbsp;The grid below shows the most basic version. When permalink is not enabled, the image becomes a lightbox. &nbsp;Select halves, thirds, or quarters to set the grid width. &nbsp;Leave them all blank for a full width. &nbsp;Check more than one size&nbsp;for unexpected results!
+
+[venue-gallery venues="88,110,46,4277" capacities="false" styles="false" description="false" permalink="false" carousel="false" halves="false" thirds="false" quarters="true"]
+
+...Here is a list of venues with all the features enabled:
+
+[venue-gallery venues="88,96,100" capacities="true" styles="true" description="true" permalink="true" carousel="true"]
+
+{{section:black}}
+<h2 style="text-align: center;">Columns System</h2>
+<div class="row has-wide">
+<div class="col-smart wider">
+<h2>The Columns system works now.</h2>
+Can be a little temperamental with elements, but with some expert use of the shift key and the text you can usually get by.
+
+This is partly because of limitations of time, but also because there are actually documented bugs with nested elements. &nbsp;If you know your HTML, you can usually fix things.
+
+A key bug is that inserting images sometimes doesn't work, when you use the buttons. &nbsp;However if you insert an image 'outside' of the column and paste it in it usually works fine.
+
+
+</div>
+<div class="col-smart">
+
+<img src="http://ita.dev.chand.co/wp-content/uploads/2013/06/026-113-tasting-367x206.jpg" alt="" width="367" height="206" class="alignfull-width size-medium wp-image-6931 class   ci polaroid rotate-right aligncenter"><img src="http://ita.dev.chand.co/wp-content/uploads/2013/06/0005_Kraken_Cocktails-299x168.jpg" width="299" height="168" class="class   wp-image-6923 size-medium-tablet ci polaroid rotate-left aligncenter">
+
+
+</div>
+</div>
+<div class="row has-wide">
+<div class="col-smart wider">
+
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium">
+
+
+</div>
+<div class="col-smart">
+
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium">
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium">
+
+
+</div>
+<div class="col-smart">
+
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium">
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium">
+
+
+</div>
+</div>
+Managing whitespace can be tricky, but hopefully the usefulness of laying out content outweighs the quirks!
+
+{{section:blue}}
+<h2 style="text-align: center;">Images</h2>
+If you insert an image, select it, and click an option from the "Image Styles" dropdown you can apply styles like so. &nbsp;Images INSIDE a column grid will <em><strong>fill</strong> </em>the width of the grid unless you align left or right.
+<div class="row">
+<div class="col-smart">
+
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium ci polaroid rotate-left">
+Border Rotate Left
+
+
+</div>
+<div class="col-smart">
+
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium ci polaroid rotate-right">
+Border Rotate Right
+
+
+</div>
+<div class="col-smart">
+
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium ci polaroid">
+Border
+
+
+</div>
+</div>
+<div class="row">
+<div class="col-smart">
+
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium ci rotate-left">
+Rotate Left
+
+
+</div>
+<div class="col-smart">
+
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium ci rotate-right">
+Rotate Right
+
+
+</div>
+<div class="col-smart">
+
+<img src="http://ita.dev.chand.co/wp-content/uploads/2015/02/Wedding-Photographs-002-367x206.jpg" width="367" height="206" class="alignnone wp-image-6415 size-medium  ">
+Select None to clear styles
+
+
+</div>
+</div>
+&nbsp;

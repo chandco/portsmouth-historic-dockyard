@@ -1674,8 +1674,9 @@
 /* LESS Document */
 .central-column {
   width: 100%;
-  max-width: 1400px;
-  margin: auto;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
 }
 @media screen and (max-width: 1400px) {
@@ -1685,8 +1686,9 @@
 }
 .max-central {
   width: 100%;
-  max-width: 1400px;
-  margin: auto;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
 }
 @media screen and (max-width: 1400px) {
@@ -1695,7 +1697,8 @@
   }
 }
 .cf_columns,
-.cf-columns {
+.cf-columns,
+.row {
   height: auto;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1708,16 +1711,29 @@
           flex-direction: row;
 }
 .cf_columns .col-smart,
-.cf-columns .col-smart {
+.cf-columns .col-smart,
+.row .col-smart {
   -webkit-box-flex: 1;
   -webkit-flex: 1 0 0;
       -ms-flex: 1 0 0;
           flex: 1 0 0;
   height: auto;
   max-width: 100%;
+  padding: 1em;
+}
+.cf_columns .col-smart:first-of-type,
+.cf-columns .col-smart:first-of-type,
+.row .col-smart:first-of-type {
+  padding-left: 0;
+}
+.cf_columns .col-smart.no-padding,
+.cf-columns .col-smart.no-padding,
+.row .col-smart.no-padding {
+  padding: 0;
 }
 .cf_columns .col-smart.wider,
-.cf-columns .col-smart.wider {
+.cf-columns .col-smart.wider,
+.row .col-smart.wider {
   -webkit-box-flex: 2.12;
   -webkit-flex: 2.12 0 0;
       -ms-flex: 2.12 0 0;
@@ -1725,7 +1741,8 @@
 }
 @media screen and (max-width: 600px) {
   .cf_columns,
-  .cf-columns {
+  .cf-columns,
+  .row {
     display: block;
   }
 }
@@ -1735,119 +1752,165 @@
 .no-flexbox .cf_columns .col-smart:only-child,
 #tinymce .cf_columns .col-smart:only-child,
 .no-flexbox .cf-columns .col-smart:only-child,
-#tinymce .cf-columns .col-smart:only-child {
+#tinymce .cf-columns .col-smart:only-child,
+.no-flexbox .row .col-smart:only-child,
+#tinymce .row .col-smart:only-child {
   max-width: 100%;
 }
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(2) ~ .col-smart,
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(2) ~ .col-smart,
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(2) ~ .col-smart,
 #tinymce .cf-columns .col-smart:first-child:nth-last-child(2) ~ .col-smart,
+.no-flexbox .row .col-smart:first-child:nth-last-child(2) ~ .col-smart,
+#tinymce .row .col-smart:first-child:nth-last-child(2) ~ .col-smart,
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(2),
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(2),
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(2),
-#tinymce .cf-columns .col-smart:first-child:nth-last-child(2) {
+#tinymce .cf-columns .col-smart:first-child:nth-last-child(2),
+.no-flexbox .row .col-smart:first-child:nth-last-child(2),
+#tinymce .row .col-smart:first-child:nth-last-child(2) {
   max-width: 48% !important;
 }
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(3) ~ .col-smart,
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(3) ~ .col-smart,
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(3) ~ .col-smart,
 #tinymce .cf-columns .col-smart:first-child:nth-last-child(3) ~ .col-smart,
+.no-flexbox .row .col-smart:first-child:nth-last-child(3) ~ .col-smart,
+#tinymce .row .col-smart:first-child:nth-last-child(3) ~ .col-smart,
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(3),
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(3),
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(3),
-#tinymce .cf-columns .col-smart:first-child:nth-last-child(3) {
+#tinymce .cf-columns .col-smart:first-child:nth-last-child(3),
+.no-flexbox .row .col-smart:first-child:nth-last-child(3),
+#tinymce .row .col-smart:first-child:nth-last-child(3) {
   max-width: 30.66666667% !important;
 }
 .no-flexbox .cf_columns.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart,
 #tinymce .cf_columns.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart,
 .no-flexbox .cf-columns.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart,
 #tinymce .cf-columns.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart,
+.no-flexbox .row.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart,
+#tinymce .row.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart,
 .no-flexbox .cf_columns.has-wide .col-smart:first-child:nth-last-child(3),
 #tinymce .cf_columns.has-wide .col-smart:first-child:nth-last-child(3),
 .no-flexbox .cf-columns.has-wide .col-smart:first-child:nth-last-child(3),
-#tinymce .cf-columns.has-wide .col-smart:first-child:nth-last-child(3) {
+#tinymce .cf-columns.has-wide .col-smart:first-child:nth-last-child(3),
+.no-flexbox .row.has-wide .col-smart:first-child:nth-last-child(3),
+#tinymce .row.has-wide .col-smart:first-child:nth-last-child(3) {
   max-width: 22% !important;
 }
 .no-flexbox .cf_columns.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart.wider,
 #tinymce .cf_columns.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart.wider,
 .no-flexbox .cf-columns.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart.wider,
 #tinymce .cf-columns.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart.wider,
+.no-flexbox .row.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart.wider,
+#tinymce .row.has-wide .col-smart:first-child:nth-last-child(3) ~ .col-smart.wider,
 .no-flexbox .cf_columns.has-wide .col-smart.wider:first-child:nth-last-child(3),
 #tinymce .cf_columns.has-wide .col-smart.wider:first-child:nth-last-child(3),
 .no-flexbox .cf-columns.has-wide .col-smart.wider:first-child:nth-last-child(3),
-#tinymce .cf-columns.has-wide .col-smart.wider:first-child:nth-last-child(3) {
+#tinymce .cf-columns.has-wide .col-smart.wider:first-child:nth-last-child(3),
+.no-flexbox .row.has-wide .col-smart.wider:first-child:nth-last-child(3),
+#tinymce .row.has-wide .col-smart.wider:first-child:nth-last-child(3) {
   max-width: 48% !important;
 }
 .no-flexbox .cf_columns.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart,
 #tinymce .cf_columns.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart,
 .no-flexbox .cf-columns.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart,
 #tinymce .cf-columns.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart,
+.no-flexbox .row.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart,
+#tinymce .row.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart,
 .no-flexbox .cf_columns.has-wide .col-smart:first-child:nth-last-child(2),
 #tinymce .cf_columns.has-wide .col-smart:first-child:nth-last-child(2),
 .no-flexbox .cf-columns.has-wide .col-smart:first-child:nth-last-child(2),
-#tinymce .cf-columns.has-wide .col-smart:first-child:nth-last-child(2) {
+#tinymce .cf-columns.has-wide .col-smart:first-child:nth-last-child(2),
+.no-flexbox .row.has-wide .col-smart:first-child:nth-last-child(2),
+#tinymce .row.has-wide .col-smart:first-child:nth-last-child(2) {
   max-width: 30.66666667% !important;
 }
 .no-flexbox .cf_columns.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart.wider,
 #tinymce .cf_columns.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart.wider,
 .no-flexbox .cf-columns.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart.wider,
 #tinymce .cf-columns.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart.wider,
+.no-flexbox .row.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart.wider,
+#tinymce .row.has-wide .col-smart:first-child:nth-last-child(2) ~ .col-smart.wider,
 .no-flexbox .cf_columns.has-wide .col-smart.wider:first-child:nth-last-child(2),
 #tinymce .cf_columns.has-wide .col-smart.wider:first-child:nth-last-child(2),
 .no-flexbox .cf-columns.has-wide .col-smart.wider:first-child:nth-last-child(2),
-#tinymce .cf-columns.has-wide .col-smart.wider:first-child:nth-last-child(2) {
+#tinymce .cf-columns.has-wide .col-smart.wider:first-child:nth-last-child(2),
+.no-flexbox .row.has-wide .col-smart.wider:first-child:nth-last-child(2),
+#tinymce .row.has-wide .col-smart.wider:first-child:nth-last-child(2) {
   max-width: 61.33333333% !important;
 }
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(4) ~ .col-smart,
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(4) ~ .col-smart,
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(4) ~ .col-smart,
 #tinymce .cf-columns .col-smart:first-child:nth-last-child(4) ~ .col-smart,
+.no-flexbox .row .col-smart:first-child:nth-last-child(4) ~ .col-smart,
+#tinymce .row .col-smart:first-child:nth-last-child(4) ~ .col-smart,
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(4),
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(4),
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(4),
-#tinymce .cf-columns .col-smart:first-child:nth-last-child(4) {
+#tinymce .cf-columns .col-smart:first-child:nth-last-child(4),
+.no-flexbox .row .col-smart:first-child:nth-last-child(4),
+#tinymce .row .col-smart:first-child:nth-last-child(4) {
   max-width: 22% !important;
 }
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(3n+5) ~ .col-smart,
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(3n+5) ~ .col-smart,
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(3n+5) ~ .col-smart,
 #tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+5) ~ .col-smart,
+.no-flexbox .row .col-smart:first-child:nth-last-child(3n+5) ~ .col-smart,
+#tinymce .row .col-smart:first-child:nth-last-child(3n+5) ~ .col-smart,
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(3n+5),
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(3n+5),
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(3n+5),
-#tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+5) {
+#tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+5),
+.no-flexbox .row .col-smart:first-child:nth-last-child(3n+5),
+#tinymce .row .col-smart:first-child:nth-last-child(3n+5) {
   max-width: 48%;
 }
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(3n+5) + .col-smart ~ .col-smart,
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(3n+5) + .col-smart ~ .col-smart,
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(3n+5) + .col-smart ~ .col-smart,
-#tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+5) + .col-smart ~ .col-smart {
+#tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+5) + .col-smart ~ .col-smart,
+.no-flexbox .row .col-smart:first-child:nth-last-child(3n+5) + .col-smart ~ .col-smart,
+#tinymce .row .col-smart:first-child:nth-last-child(3n+5) + .col-smart ~ .col-smart {
   max-width: 30.66666667%;
 }
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(3n+6) ~ .col-smart,
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(3n+6) ~ .col-smart,
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(3n+6) ~ .col-smart,
 #tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+6) ~ .col-smart,
+.no-flexbox .row .col-smart:first-child:nth-last-child(3n+6) ~ .col-smart,
+#tinymce .row .col-smart:first-child:nth-last-child(3n+6) ~ .col-smart,
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(3n+6),
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(3n+6),
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(3n+6),
-#tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+6) {
+#tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+6),
+.no-flexbox .row .col-smart:first-child:nth-last-child(3n+6),
+#tinymce .row .col-smart:first-child:nth-last-child(3n+6) {
   max-width: 30.66666667%;
 }
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(3n+7) ~ .col-smart,
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(3n+7) ~ .col-smart,
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(3n+7) ~ .col-smart,
 #tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+7) ~ .col-smart,
+.no-flexbox .row .col-smart:first-child:nth-last-child(3n+7) ~ .col-smart,
+#tinymce .row .col-smart:first-child:nth-last-child(3n+7) ~ .col-smart,
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(3n+7),
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(3n+7),
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(3n+7),
-#tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+7) {
+#tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+7),
+.no-flexbox .row .col-smart:first-child:nth-last-child(3n+7),
+#tinymce .row .col-smart:first-child:nth-last-child(3n+7) {
   max-width: 96%;
 }
 .no-flexbox .cf_columns .col-smart:first-child:nth-last-child(3n+7) + .col-smart + .col-smart + .col-smart ~ .col-smart,
 #tinymce .cf_columns .col-smart:first-child:nth-last-child(3n+7) + .col-smart + .col-smart + .col-smart ~ .col-smart,
 .no-flexbox .cf-columns .col-smart:first-child:nth-last-child(3n+7) + .col-smart + .col-smart + .col-smart ~ .col-smart,
-#tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+7) + .col-smart + .col-smart + .col-smart ~ .col-smart {
+#tinymce .cf-columns .col-smart:first-child:nth-last-child(3n+7) + .col-smart + .col-smart + .col-smart ~ .col-smart,
+.no-flexbox .row .col-smart:first-child:nth-last-child(3n+7) + .col-smart + .col-smart + .col-smart ~ .col-smart,
+#tinymce .row .col-smart:first-child:nth-last-child(3n+7) + .col-smart + .col-smart + .col-smart ~ .col-smart {
   max-width: 30.66666667%;
 }
 .cf_columns,
@@ -1999,7 +2062,7 @@ body#tinymce.wp-editor {
   -webkit-font-smoothing: antialiased;
   background: #ffffff;
   color: #333333;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'ITC Tabula W01', sans-serif;
   /* normalize.css 2012-07-07T09:50 UTC - http://github.com/necolas/normalize.css */
   /* ==========================================================================
      HTML5 display definitions
@@ -2440,50 +2503,34 @@ body#tinymce.wp-editor a.cta-inline {
 }
 body#tinymce.wp-editor a.cta,
 body#tinymce.wp-editor a.cta-inline {
-  background: #d22529;
-  color: #ffffff !important;
+  border: 2px solid #ba272d;
+  color: #ba272d;
   max-width: 97%;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'ITC Tabula W01', sans-serif;
   font-weight: normal;
   position: relative;
-  padding: 0.5em 1em;
-  text-align: center;
+  padding: 0.5em 1em .5em 3em;
+  text-align: left;
   margin: 1em auto;
   z-index: 1;
+  text-transform: uppercase;
 }
 body#tinymce.wp-editor a.cta:visited,
 body#tinymce.wp-editor a.cta-inline:visited {
-  color: #ffffff;
+  color: #ba272d;
 }
 body#tinymce.wp-editor a.cta *,
 body#tinymce.wp-editor a.cta-inline * {
-  color: #ffffff;
+  color: #ba272d;
 }
 body#tinymce.wp-editor a.cta:hover,
 body#tinymce.wp-editor a.cta-inline:hover {
-  color: #5555ff;
+  color: #ffffff !important;
+  background: #ba272d;
 }
 body#tinymce.wp-editor a.cta:hover *,
 body#tinymce.wp-editor a.cta-inline:hover * {
-  color: #5555ff;
-}
-body#tinymce.wp-editor a.cta::after,
-body#tinymce.wp-editor a.cta-inline::after {
-  content: "";
-  display: block;
-  position: absolute;
-  margin: auto;
-  background: transparent;
-  border-width: 0 0.3em 0.3em 0.3em;
-  border-style: solid;
-  border-color: #e6e6e6;
-  z-index: -1;
-  top: 30%;
-  bottom: -0.29em;
-  left: -0.29em;
-  right: -0.29em;
-  -webkit-transition: border-color 0.7s ease, -webkit-transform 0.2s ease;
-          transition: border-color 0.7s ease, transform 0.2s ease;
+  color: #ffffff;
 }
 body#tinymce.wp-editor a.cta:hover:after,
 body#tinymce.wp-editor a.cta-inline:hover:after {
@@ -2498,8 +2545,12 @@ body#tinymce.wp-editor a.cta-inline i.fa {
   float: left;
   margin-bottom: 20px;
   margin-right: 20px;
-  top: 4px;
-  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 0.5em;
+  position: absolute;
   font-size: 1.5em;
 }
 body#tinymce.wp-editor a div.feature,
@@ -2512,7 +2563,7 @@ body#tinymce.wp-editor div.feature {
   cursor: pointer;
   position: relative;
   width: 100%;
-  background: #dddddd;
+  background: #000000;
   -webkit-transition: background 0.4s ease;
           transition: background 0.4s ease;
 }
@@ -2550,15 +2601,18 @@ body#tinymce.wp-editor div.feature header p {
 }
 body#tinymce.wp-editor div.feature header h2 {
   position: absolute;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.6);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-transform: uppercase;
   width: 100%;
   left: 0;
   color: #ffffff;
   z-index: 2;
   margin: 0;
   padding: 0.5em 1em;
-  font-size: 1em;
+  font-size: 2em;
   text-align: center;
   -webkit-transition: background 0.2s ease;
           transition: background 0.2s ease;
@@ -2575,21 +2629,15 @@ body#tinymce.wp-editor div.feature header img {
   left: 50%;
   -webkit-transform: translateX(-50%) scale(1, 1) translateZ(0);
           transform: translateX(-50%) scale(1, 1) translateZ(0);
-  -webkit-transition: -webkit-transform 0.4s ease-out;
-          transition: transform 0.4s ease-out;
+  opacity: 0.8;
+  -webkit-transition: opacity 0.4s ease-out;
+          transition: opacity 0.4s ease-out;
   background-color: rgba(255, 255, 255, 0.01);
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
-body#tinymce.wp-editor div.feature:hover {
-  background: #ffffff;
-}
 body#tinymce.wp-editor div.feature:hover header img {
-  -webkit-transform: translateX(-50%) scale(1.1, 1.1) translateZ(0);
-          transform: translateX(-50%) scale(1.1, 1.1) translateZ(0);
-}
-body#tinymce.wp-editor div.feature:hover header h2 {
-  background: rgba(51, 51, 51, 0.9);
+  opacity: 0.4;
 }
 body#tinymce.wp-editor div.feature div.content {
   box-sizing: border-box;
@@ -2621,16 +2669,17 @@ body#tinymce.wp-editor h1,
 body#tinymce.wp-editor h2,
 body#tinymce.wp-editor h3,
 body#tinymce.wp-editor h4 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'ITC Tabula W01', sans-serif;
   margin-top: 0;
 }
 body#tinymce.wp-editor h5,
 body#tinymce.wp-editor h6 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'ITC Tabula W01', sans-serif;
   font-weight: bold;
   margin-top: 0;
 }
-body#tinymce.wp-editor .cf_columns {
+body#tinymce.wp-editor .cf_columns,
+body#tinymce.wp-editor .row {
   height: auto;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2645,30 +2694,44 @@ body#tinymce.wp-editor .cf_columns {
   position: relative;
   width: 100%;
 }
-body#tinymce.wp-editor .cf_columns .col-smart {
+body#tinymce.wp-editor .cf_columns .col-smart,
+body#tinymce.wp-editor .row .col-smart {
   -webkit-box-flex: 1;
   -webkit-flex: 1 0 0;
       -ms-flex: 1 0 0;
           flex: 1 0 0;
   height: auto;
   max-width: 100%;
+  padding: 1em;
 }
-body#tinymce.wp-editor .cf_columns .col-smart.wider {
+body#tinymce.wp-editor .cf_columns .col-smart:first-of-type,
+body#tinymce.wp-editor .row .col-smart:first-of-type {
+  padding-left: 0;
+}
+body#tinymce.wp-editor .cf_columns .col-smart.no-padding,
+body#tinymce.wp-editor .row .col-smart.no-padding {
+  padding: 0;
+}
+body#tinymce.wp-editor .cf_columns .col-smart.wider,
+body#tinymce.wp-editor .row .col-smart.wider {
   -webkit-box-flex: 2.12;
   -webkit-flex: 2.12 0 0;
       -ms-flex: 2.12 0 0;
           flex: 2.12 0 0;
 }
 @media screen and (max-width: 600px) {
-  body#tinymce.wp-editor .cf_columns {
+  body#tinymce.wp-editor .cf_columns,
+  body#tinymce.wp-editor .row {
     display: block;
   }
 }
-body#tinymce.wp-editor .cf_columns .debug {
+body#tinymce.wp-editor .cf_columns .debug,
+body#tinymce.wp-editor .row .debug {
   height: 300px;
   background-color: rgba(255, 0, 0, 0.5);
 }
-body#tinymce.wp-editor .cf_columns > *[class^="col-"] {
+body#tinymce.wp-editor .cf_columns > *[class^="col-"],
+body#tinymce.wp-editor .row > *[class^="col-"] {
   position: relative;
   vertical-align: top;
   box-sizing: border-box;
@@ -2676,64 +2739,78 @@ body#tinymce.wp-editor .cf_columns > *[class^="col-"] {
   padding-left: 4%;
   width: 100%;
 }
-body#tinymce.wp-editor .cf_columns > *[class^="col-"]:first-of-type {
+body#tinymce.wp-editor .cf_columns > *[class^="col-"]:first-of-type,
+body#tinymce.wp-editor .row > *[class^="col-"]:first-of-type {
   padding-left: 0;
 }
-body#tinymce.wp-editor .cf_columns > *[class^="col-"]:first-of-type:nth-last-child(4) {
+body#tinymce.wp-editor .cf_columns > *[class^="col-"]:first-of-type:nth-last-child(4),
+body#tinymce.wp-editor .row > *[class^="col-"]:first-of-type:nth-last-child(4) {
   max-width: 84%;
 }
-body#tinymce.wp-editor .cf_columns > *[class^="col-"]:first-of-type:nth-last-child(3) {
+body#tinymce.wp-editor .cf_columns > *[class^="col-"]:first-of-type:nth-last-child(3),
+body#tinymce.wp-editor .row > *[class^="col-"]:first-of-type:nth-last-child(3) {
   max-width: 88%;
 }
-body#tinymce.wp-editor .cf_columns > *[class^="col-"]:first-of-type:nth-last-child(2) {
+body#tinymce.wp-editor .cf_columns > *[class^="col-"]:first-of-type:nth-last-child(2),
+body#tinymce.wp-editor .row > *[class^="col-"]:first-of-type:nth-last-child(2) {
   max-width: 92%;
 }
-body#tinymce.wp-editor .cf_columns .col-quarter {
+body#tinymce.wp-editor .cf_columns .col-quarter,
+body#tinymce.wp-editor .row .col-quarter {
   width: 22%;
 }
-body#tinymce.wp-editor .cf_columns .col-half {
+body#tinymce.wp-editor .cf_columns .col-half,
+body#tinymce.wp-editor .row .col-half {
   width: 48%;
 }
-body#tinymce.wp-editor .cf_columns .col-threequarters {
+body#tinymce.wp-editor .cf_columns .col-threequarters,
+body#tinymce.wp-editor .row .col-threequarters {
   width: 92%;
 }
-body#tinymce.wp-editor .cf_columns .col-third {
+body#tinymce.wp-editor .cf_columns .col-third,
+body#tinymce.wp-editor .row .col-third {
   width: 30.66666667%;
 }
-body#tinymce.wp-editor .cf_columns .col-twothirds {
+body#tinymce.wp-editor .cf_columns .col-twothirds,
+body#tinymce.wp-editor .row .col-twothirds {
   width: 61.33333333%;
 }
 @media screen and (max-width: 600px) {
-  body#tinymce.wp-editor .cf_columns > div[class^="col-"] {
+  body#tinymce.wp-editor .cf_columns > div[class^="col-"],
+  body#tinymce.wp-editor .row > div[class^="col-"] {
     max-width: 100% !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
     margin-bottom: 4% !important;
   }
-  body#tinymce.wp-editor .cf_columns.no-respond .col-quarter {
+  body#tinymce.wp-editor .cf_columns.no-respond .col-quarter,
+  body#tinymce.wp-editor .row.no-respond .col-quarter {
     width: 22%;
   }
-  body#tinymce.wp-editor .cf_columns.no-respond .col-half {
+  body#tinymce.wp-editor .cf_columns.no-respond .col-half,
+  body#tinymce.wp-editor .row.no-respond .col-half {
     width: 48%;
   }
-  body#tinymce.wp-editor .cf_columns.no-respond .col-threequarters {
+  body#tinymce.wp-editor .cf_columns.no-respond .col-threequarters,
+  body#tinymce.wp-editor .row.no-respond .col-threequarters {
     width: 92%;
   }
-  body#tinymce.wp-editor .cf_columns.no-respond .col-third {
+  body#tinymce.wp-editor .cf_columns.no-respond .col-third,
+  body#tinymce.wp-editor .row.no-respond .col-third {
     width: 30.66666667%;
   }
-  body#tinymce.wp-editor .cf_columns.no-respond .col-twothirds {
+  body#tinymce.wp-editor .cf_columns.no-respond .col-twothirds,
+  body#tinymce.wp-editor .row.no-respond .col-twothirds {
     width: 61.33333333%;
   }
-  body#tinymce.wp-editor .cf_columns.no-respond > div[class^="col-"]:last-of-type {
+  body#tinymce.wp-editor .cf_columns.no-respond > div[class^="col-"]:last-of-type,
+  body#tinymce.wp-editor .row.no-respond > div[class^="col-"]:last-of-type {
     margin-right: 0;
   }
-  body#tinymce.wp-editor .cf_columns.no-respond > div[class^="col-"]:first-of-type {
+  body#tinymce.wp-editor .cf_columns.no-respond > div[class^="col-"]:first-of-type,
+  body#tinymce.wp-editor .row.no-respond > div[class^="col-"]:first-of-type {
     margin-left: 0;
   }
-}
-body#tinymce.wp-editor .cf_columns .col-smart {
-  padding: 2% !important;
 }
 body#tinymce.wp-editor div.feature * {
   pointer-events: none;
@@ -2757,12 +2834,14 @@ body#tinymce.wp-editor .full-width-background:before {
 body#tinymce.wp-editor .full-width-background.blue:before {
   background: #bbe3e8;
 }
-body#tinymce.wp-editor div.cf_columns {
+body#tinymce.wp-editor div.cf_columns,
+body#tinymce.wp-editor div.row {
   margin: 10px auto;
   width: 100%;
   padding: 10px;
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'],
+body#tinymce.wp-editor div.row > div[class^='col-'] {
   border-style: dotted;
   border-color: #999;
   border-width: 1px 0px 1px 1px;
@@ -2771,10 +2850,16 @@ body#tinymce.wp-editor div.cf_columns > div[class^='col-'] {
   position: relative;
   min-height: 200px;
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-']:last-of-type {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'].no-padding,
+body#tinymce.wp-editor div.row > div[class^='col-'].no-padding {
+  padding: 1px;
+}
+body#tinymce.wp-editor div.cf_columns > div[class^='col-']:last-of-type,
+body#tinymce.wp-editor div.row > div[class^='col-']:last-of-type {
   border-right: 1px dotted #999;
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] button[class^='col-control-'] {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] button[class^='col-control-'],
+body#tinymce.wp-editor div.row > div[class^='col-'] button[class^='col-control-'] {
   position: absolute;
   margin: 0;
   display: none;
@@ -2792,7 +2877,8 @@ body#tinymce.wp-editor div.cf_columns > div[class^='col-'] button[class^='col-co
   border-radius: 66px;
   box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] button[class^='col-control-']:before {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] button[class^='col-control-']:before,
+body#tinymce.wp-editor div.row > div[class^='col-'] button[class^='col-control-']:before {
   display: block;
   -webkit-font-smoothing: antialiased;
   font: normal 30px/1 'dashicons';
@@ -2802,29 +2888,35 @@ body#tinymce.wp-editor div.cf_columns > div[class^='col-'] button[class^='col-co
   top: 4px;
   width: 24px;
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-']:hover button[class^='col-control-'] {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-']:hover button[class^='col-control-'],
+body#tinymce.wp-editor div.row > div[class^='col-']:hover button[class^='col-control-'] {
   display: block;
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-add {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-add,
+body#tinymce.wp-editor div.row > div[class^='col-'] .col-control-add {
   top: 40px;
   right: -15px;
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-add:before {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-add:before,
+body#tinymce.wp-editor div.row > div[class^='col-'] .col-control-add:before {
   color: #5e7;
   content: "\f502";
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-remove {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-remove,
+body#tinymce.wp-editor div.row > div[class^='col-'] .col-control-remove {
   top: 10px;
   left: 50%;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-remove:before {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-remove:before,
+body#tinymce.wp-editor div.row > div[class^='col-'] .col-control-remove:before {
   color: #900;
   content: "\f153";
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-extend {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-extend,
+body#tinymce.wp-editor div.row > div[class^='col-'] .col-control-extend {
   bottom: -28px;
   left: 43%;
   -webkit-transform: translateY(-50%);
@@ -2832,12 +2924,23 @@ body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-extend {
           transform: translateY(-50%);
   min-width: 69px;
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-extend:before {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-extend:before,
+body#tinymce.wp-editor div.row > div[class^='col-'] .col-control-extend:before {
   content: "\f340 \f344";
   color: #000;
   min-width: 60px;
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-shrink {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-padding,
+body#tinymce.wp-editor div.row > div[class^='col-'] .col-control-padding {
+  top: 10px;
+  left: 20px;
+}
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-padding:before,
+body#tinymce.wp-editor div.row > div[class^='col-'] .col-control-padding:before {
+  content: "\f009";
+}
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-shrink,
+body#tinymce.wp-editor div.row > div[class^='col-'] .col-control-shrink {
   bottom: -28px;
   left: 43%;
   -webkit-transform: translateY(-50%);
@@ -2845,7 +2948,8 @@ body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-shrink {
           transform: translateY(-50%);
   min-width: 69px;
 }
-body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-shrink:before {
+body#tinymce.wp-editor div.cf_columns > div[class^='col-'] .col-control-shrink:before,
+body#tinymce.wp-editor div.row > div[class^='col-'] .col-control-shrink:before {
   content: "\f344 \f340";
   color: #000;
   min-width: 60px;

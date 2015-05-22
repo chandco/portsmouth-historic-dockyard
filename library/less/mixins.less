@@ -32,6 +32,16 @@
   }
 }
 
+.colours-bg( @lighten : 0% ) {
+  &.yellow { background: lighten(@yellow, @lighten); }
+  &.white { background: lighten(@white, @lighten); }
+
+  &.purple { background: lighten(@purple, @lighten); color: @white; }
+  &.grey { background: lighten(@grey, @lighten); }
+  &.blue { background: lighten(@blue, @lighten); }
+  &.green { background: lighten(@green, @lighten); }
+  &.black { background: lighten(@black, @lighten); color: @white }
+}
 
 .fa-this(@icon) {
   
@@ -63,7 +73,7 @@
 }
 
 .gradientV(@start, @end){
-  background: (@start + @end) / 2; // Non CSS3 browsers get the average color
+  background: transparent; //(@start + @end) / 2; // Non CSS3 browsers get the average color
   background-image: -moz-linear-gradient(top,  @start, @end); // FF 3.6
   background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end)); // Safari 4+, Chrome
   background-image: -webkit-linear-gradient(top, @start, @end); // Chrome 10+, Safari 5.1+
@@ -134,10 +144,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 
-.max-central-mixin(@max-width:1400px) {
+.max-central-mixin(@max-width:1200px) {
       width: 100%;
       max-width: @max-width;
-      margin: auto;
+      margin-left: auto;
+      margin-right: auto;
       position: relative;
 
       @media screen and (max-width: 1400px) {

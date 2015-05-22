@@ -32,8 +32,108 @@
 
 */
 
+add_filter("the_content", "WrapStuff", 0);
 
 
+
+
+function WrapStuff( $post ) {
+
+	$pattern = "/{{section:(\#?.+)}}/";
+	
+
+	$chars = preg_split($pattern, $post, null, PREG_SPLIT_DELIM_CAPTURE);
+	
+	
+
+	$original = $post;
+
+	$newpost = "";
+	if (count($chars) == 0) return $post;
+
+	$even = true;
+
+
+	foreach ($chars as $key => $match) {
+
+		
+
+		if ($even) {
+			// content
+			$newpost .= $match;
+
+			if ($key > 0) {
+				$newpost .= "</section>"; // close div
+			}
+		} else {
+
+			// flag
+			if (substr($match, 0, 1) == '#' || substr(strtolower($match), 0, 3) == 'rgb') {
+				$newpost .= "<section class='full-width-background' style='background:" . $match . ";'>"; 
+			} else {
+				$newpost .= "<section class='full-width-background " . $match . "'>"; 
+			}
+			
+			
+
+		}
+		
+		
+		
+		$even = ($even) ? false : true; 
+	}
+
+	return $newpost;
+	// 	/*
+	// 	$match == {{section:colour}}
+	// 	$matches[1][$key] == colour
+	// 	*/
+
+	// 	echo $x . "<textarea>" . print_r($match, true) . "</textarea>";
+
+		
+		
+		
+	// 	$chunk = strstr($post, $match, TRUE ); // everything before this instance of the section
+	// 	echo "<textarea>" . $chunk . "</textarea>";
+	// 	echo "<textarea>" . $post . "</textarea>";
+	// 	echo "<textarea>" . strstr($post, $match) . "</textarea>";
+	// 	$newpost .= $chunk;
+		
+	// 	if ($key > 0) {
+	// 		$newpost .= "</div>";
+	// 	}
+		
+	// 	// open the section
+	// 	$newpost .= "<div class='section " . $matches[1][$key] . "'>"; 
+
+
+		
+	// 	echo "<hr>";
+
+	// 	$post = str_replace( $match, "", strstr($post, $match) );
+	
+	// 	$x++;
+		
+	// }
+
+	// $newpost .= $post . "</div>"; // we never close this in the loop above
+
+	// return $newpost;
+
+
+
+}
+
+function print_filters_for( $hook = '' ) {
+    global $wp_filter;
+    if( empty( $hook ) || !isset( $wp_filter[$hook] ) )
+        return;
+
+    print '<pre>';
+    print_r( $wp_filter[$hook] );
+    print '</pre>';
+}
 // not really a shortcode but it is for the editor
 // // Callback function to insert 'styleselect' into the $buttons array
 
@@ -107,19 +207,22 @@ function change_mce_options($init){
 	$init['style_formats'] = json_encode( $style_formats );  
 	
     //$init["forced_root_block"] = false;
-    //$init["force_br_newlines"] = true;
-    $init["force_p_newlines"] = true;
+    $init["force_br_newlines"] = true;
+    $init["force_p_newlines"] = false;
     //$init["convert_newlines_to_brs"] = false;
     $opts = '*[*]';
 	$init['valid_elements'] = $opts;
-	$init['extended_valid_elements'] = $opts;
-	$init["valid_children"] = "+div[*],-*[.full-width-background]";
+	$init['extended_valid_elements'] = '+div.row[div.col-smart]';
+	$init['custom_elements'] = 'cfrowblock';
+	$init["valid_children"] = "+section[*],+div[*],+span[*]";
+	$init["cleanup"] = false;
+	$init["verify_html"] = false;
 	
     return $init;       
 }
 
 
- add_action( 'init', 'cf_editor_buttons' );
+add_action( 'init', 'cf_editor_buttons' );
 function cf_editor_buttons() {
     add_filter( "mce_external_plugins", "wptuts_add_buttons" );
     add_filter( 'mce_buttons', 'wptuts_register_buttons' );
@@ -129,29 +232,18 @@ function cf_editor_buttons() {
 
 
 function wptuts_add_buttons( $plugin_array ) {
-    $plugin_array['cf_features'] = get_stylesheet_directory_uri() . '/admin/js/tinymce.js';
+    $plugin_array['cf_features'] = get_stylesheet_directory_uri() . '/library/editor/admin/js/tinymce.js';
     return $plugin_array;
 }
 
 function wptuts_register_buttons( $buttons ) {
 
 	// update this after the javascript is done
-    array_push( $buttons, 'feature', 'infobox', 'columns', 'widebg', 'cta-link', 'cta-link-wide', 'addIcons', 'capacities', 'tables' ); //'thirds', 'twothirds-third', 'third-twothirds', 'quarters' ); // dropcap', 'recentposts
+    array_push( $buttons, 'feature', 'columns', 'widebg', 'addIcons', 'imageStyler', 'venue-gallery' ); //'thirds', 'twothirds-third', 'third-twothirds', 'quarters' ); // dropcap', 'recentposts
     return $buttons;
 }
 
 
-add_filter('mce_external_plugins', 'tinymce_core_plugins');
-function tinymce_core_plugins () {
-     $plugins = array('noneditable'); //Add any more plugins you want to load here
-     $plugins_array = array();
-
-     //Build the response - the key is the plugin name, value is the URL to the plugin JS
-     foreach ($plugins as $plugin ) {
-          $plugins_array[ $plugin ] = get_stylesheet_directory_uri() . '/library/js/tinymce/' . $plugin . '/plugin.min.js';
-     }
-     return $plugins_array;
-}
 
 
 // PHP handling of various ajaxy shortcode stuff:
@@ -163,11 +255,8 @@ function mce_wp_enqueue_media($hook) {
 
 	
 	wp_enqueue_style( 'admin-helper-css', get_stylesheet_directory_uri() . '/library/css/admin.css' );
-	wp_enqueue_style( 'admin-fa-css', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' );
 	
-	wp_enqueue_script( 'admin-fonts-1', '//fast.fonts.net/jsapi/e4baf517-7128-4749-bbe6-cfc5fe4b4187.js' );
-	//wp_enqueue_script( 'admin-fonts-2', '//use.typekit.net/jfl7esy.js' );
-	//wp_enqueue_script( 'typekit', get_stylesheet_directory_uri() . '/library/js/typekit.js' );
+	
 	
 
 	if ($hook != 'admin_page_' . 'feature-box-edit') return;
@@ -177,6 +266,8 @@ function mce_wp_enqueue_media($hook) {
     wp_enqueue_script('wpdialogs');
     wp_enqueue_script('wpdialogs-popup'); //also might need this
 
+    
+
 	// need these styles
 	wp_enqueue_style('wp-jquery-ui-dialog');
 	wp_enqueue_style('thickbox');
@@ -185,22 +276,15 @@ function mce_wp_enqueue_media($hook) {
     wp_enqueue_media();
 }
 
-// get typekit loading
-add_filter("mce_external_plugins", "tomjn_mce_external_plugins");
-function tomjn_mce_external_plugins($plugin_array){
-	$plugin_array['typekit']  =  get_template_directory_uri().'/library/js/typekit.js';
-    return $plugin_array;
-}
-
-
-
-
 
 require_once("mce_feature-box.php");
-require_once("mce_infobox.php");
 
 
- add_action( 'before_wp_tiny_mce', 'custom_before_wp_tiny_mce' );
+
+
+
+
+add_action( 'before_wp_tiny_mce', 'custom_before_wp_tiny_mce' );
 function custom_before_wp_tiny_mce() {
 
 	global $imagesizes;
@@ -212,6 +296,7 @@ function custom_before_wp_tiny_mce() {
     
 
     window.mcedata = { 
+    	editorURL: '<?php echo get_stylesheet_directory_uri(); ?>/library/editor/',
     	adminurl : '<?php echo get_admin_url(); ?>',
     	siteurl : '<?php echo get_site_url(); ?>',
     	apiURL : '<?php echo get_site_url("wp-json"); ?>/wp-json/',
@@ -226,7 +311,7 @@ function custom_before_wp_tiny_mce() {
 
 	// load all the views here
 	views_feature_box(); // [feature-box]
-	views_infobox();
+	
 
 	#	[wide_background]
 
@@ -254,19 +339,4 @@ function custom_before_wp_tiny_mce() {
 
 // ajaxes for tinymce
 
-
-
-
-// add tables
-
-if (isset($wp_version)) {
-add_filter("mce_plugins", "extended_editor_mce_plugins", 0);
-
-}
-
-
-function extended_editor_mce_plugins($plugins) {
-array_push($plugins, "table");
-return $plugins;
-}
 

@@ -271,18 +271,6 @@ function shortcodes_to_exempt_from_wptexturize($shortcodes){
 
 
 
-function print_filters_for( $hook = '' ) {
-    global $wp_filter;
-    if( empty( $hook ) || !isset( $wp_filter[$hook] ) )
-        return;
-
-      $hooks = $wp_filter[$hook];
-      asort($hooks);
-    print '<pre>';
-
-    print_r( $hooks );
-    print '</pre>';
-}
 
 
 add_filter('widget_text', 'do_shortcode');

@@ -9,9 +9,10 @@ a[rel="gallery[lightbox]"] {
   img {
     display: block;
     transition:transform 0.4s ease;
+    margin: 0;
   }
   &::after {
-    content: @fa-var-search-plus;
+    //content: @fa-var-search-plus;
     .fa();
    
     position: absolute;
@@ -36,10 +37,13 @@ a[rel="gallery[lightbox]"] {
     
   }
 
+  transition:border 0.4s ease;
+  border-bottom: 2px solid transparent;
+
   &:hover {
-    img {
-      transform:scale(1.1,1.1);
-    }
+    border-bottom: 2px solid @red;
+      
+    
   }
 
   &:hover::after {
